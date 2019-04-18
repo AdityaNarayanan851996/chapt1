@@ -7,7 +7,7 @@ import java.util.Formatter;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-public class sfm implements Formattable,Comparable {
+public class sfm implements Formattable,Comparable<sfm> {
 
 
     private final int areaCode;
@@ -56,24 +56,21 @@ public class sfm implements Formattable,Comparable {
 
     }
 
-    @Override
-    public int compareTo(Object o) {
 
-            // Java API Implementation
+    @Override
+    public int compareTo(sfm o) {
+        // Java API Implementation
             /*
             return Comparator.comparingInt((sfm a) -> a.areaCode)
                     .thenComparingInt(a -> a.phoneNum)
                     .compare(this,(sfm) o);
             */
-            // GUAVA IMPLEMENTATION
+        // GUAVA IMPLEMENTATION
 
-            return ComparisonChain.start()
-                    .compare(this.areaCode,((sfm) o).areaCode)
-                    .compare(this.phoneNum,((sfm) o).phoneNum)
-                    .result();
-
-
-
+        return ComparisonChain.start()
+                .compare(this.areaCode,((sfm) o).areaCode)
+                .compare(this.phoneNum,((sfm) o).phoneNum)
+                .result();
 
     }
 }
