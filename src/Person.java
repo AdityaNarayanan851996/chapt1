@@ -39,7 +39,7 @@ public class Person {
 
         }
         Person build(){
-            // Check Conditions here.
+            // Check Conditions here
             checkState(prefix != null && surname != null);
             return new Person(title,name,prefix,surname);
         }
